@@ -1,13 +1,22 @@
 
 #include<stdio.h>
 #include<stdlib.h>
-
 #include <check.h>
 #include "../main.h"
 
 START_TEST (testNewCoin){
 
-printf("test 1 2 3\n");
+//before test sets up 
+
+
+
+printf("Starting testNewCoin\n");
+
+fail_unless(1==1,"failure message");
+
+/*
+fail_unless(sum(3,2)==5, "sum function failure\n")
+*/
 
 }
 END_TEST
