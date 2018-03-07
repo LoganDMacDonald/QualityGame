@@ -4,6 +4,7 @@
 #include <termios.h>
 #include <unistd.h>
 #include <time.h>
+#include "main.h"
 
 const int mapwidth = 10,mapheight=10;
 char map[10][10];

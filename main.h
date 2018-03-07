@@ -1,9 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-
-void newCoin();
-void movedir(int dir);
-
+int inBounds(int x, int y);
+void initialize_map();
+void claimCoin(int x, int y);
 
 #endif /* MAIN_H */
