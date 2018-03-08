@@ -6,13 +6,12 @@
 #include <time.h>
 #include "main.h"
 
-//initialize all variables
 const int mapwidth = 10,mapheight=10;
 char map[10][10];
 int charx = 0,chary = 0, score = 0, coinx,coiny, gamestate = 1, stepcount = 0;
 
 
-// Initialize simple bitmap of where walls are supposed to go
+
 short maze[10][10]={
 	{0,0,0,0,0,0,0,0,0,0},
 	{0,1,1,1,0,0,1,1,1,0},
@@ -27,10 +26,8 @@ short maze[10][10]={
 
 
 
-// the following is the workaround for linux to be able to use getch commands
-
-//----------------------------------------
 static struct termios old, new;
+
 /* Initialize new terminal i/o settings */
 void initTermios(int echo) 
 {
@@ -65,13 +62,12 @@ char getchc()
 	return getch_(0);
 }
 
-//----------------------------------------
 
 
-// clears the screen then prints the map array, along with other game messages
+
 void printMap(){
 
-	printf("\033[H\033[J");
+	printf("\033[H\033[J"); //cls character
 
 
 	for(int i = 0;i<mapwidth;i++){
@@ -103,13 +99,11 @@ int inBounds(int x, int y){
 	return 0;
 }
 
-//checks if space being moved to is either empty or contains a coin
 int isLegalMove(int x,int y){
 	if (map[x][y] ==  '*' || map[x][y] ==  '0'){return 1;}
 	else {return 0;}
 }
 
-// generates a new coin in an open space
 void newCoin(){
 
 
@@ -128,12 +122,12 @@ void newCoin(){
 
 }
 
-// removes coin, updates score, calls to place a new coin
+
 void claimCoin(int x, int y){
 	if (map[x][y] == '0'){
 		score++;
 		newCoin();
-	}
+	} 
 
 }
 
@@ -141,7 +135,7 @@ void claimCoin(int x, int y){
 
 
 
-//checks if desired direction is a valid spot to move to, then calls to move
+
 void movedir(int dir){
 
 
@@ -184,8 +178,8 @@ void movedir(int dir){
 }
 
 
- //initialize the map with all asterisks and puts walls into place
-void initialize_map(){
+
+void initialize_map(){ //initialize the map with all asterisks
 
 
 
@@ -202,39 +196,3 @@ void initialize_map(){
 }
 
 
-int main(){
-	time_t t;
-	char ch;
-	srand((unsigned) time(&t)); //seed the random number generator
-
-	//opening screen
-	printf("Welcome to COIN MAN\nCollect 10 coins to win\nPress enter to continue\n");
-	getchar(); //waits for user to press enter
-
-	initialize_map();
-
-	map[charx][chary]='@'; //puts character in place
-	int choice;
-
-	newCoin(); // places first coin
-
-	//main game loop, continues until game stops
-	while(gamestate){
-		printMap();
-		ch = getchc(); //immediately reads input upon keystroke
-
-
-
-		choice = (int)ch;
-		switch(choice){ // choses which direction to attempt to move
-			case 52: movedir(4);break;
-			case 56: movedir(1); break;
-			case 54: movedir(2); break;
-			case 50: movedir(3); break;
-			default: {printf("List of Valid Keys\n\t 8\n 4\t\t 6\n\t 2\n"); sleep(1);}
-		}
-
-	}
-
-	return 0;
-}

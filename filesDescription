@@ -1,0 +1,8 @@
+game:
+	this is the game executable
+main.c:
+	this is the c code the game is made out of
+main.h:
+	this is used to link the game functions to the testing framework
+Makefile: 
+	used to compile or remove the game executable

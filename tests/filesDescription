@@ -1,0 +1,14 @@
+gametest:
+	this is the test executable
+gametest.c:
+	this is the c code the testing executable is written in
+mainfunctionOnly.c:
+	this is used for the testing to execute without having 		interfering main functions 
+
+main.h:
+	this is used to link functions from mainfunctionOnly.c to gametest.c
+
+Makefile:
+	this is used to compile or remove the gametest executable
+Unity/:
+	this folder contains the Unity testing framework folders

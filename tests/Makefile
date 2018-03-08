@@ -1,2 +1,5 @@
 makefile:
-	gcc gametest.c ../main.c ./Unity/src/unity.c -o gametest
+	gcc gametest.c ./mainfunctionOnly.c ./Unity/src/unity.c -o gametest
+clean:
+	rm gametest
+
